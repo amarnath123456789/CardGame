@@ -60,10 +60,10 @@ print("p3:", p3)
 print("p4:", p4)'''
 
 current_turn = 1
-turn_counter = 0
+turn_counter = 1
 garbage_deck = []
 highest_priority = 0
-highest_priority_player = None
+
 
 while True: 
    player_turn = lists[current_turn]
@@ -73,7 +73,8 @@ while True:
        mideck.append(pl_input)
        player_turn.remove(pl_input)
        current_turn = (current_turn + 1) % len(lists)
-       turn_counter = +1
+       turn_counter = turn_counter + 1
+       print(turn_counter)
        if turn_counter == 4:
            garbage_deck.extend(mideck)
            for card in mideck:
@@ -81,17 +82,19 @@ while True:
                if priority > highest_priority:
                 highest_priority = priority
                 highest_priority_card = card
-                highest_priority_player = current_turn
+           print(highest_priority_card)
            mideck.clear()
-           highest_priority = 0
-           current_turn = highest_priority_player  # Start with the player who won the last round
-           highest_priority_player = None
-           turn_counter = 0
            print("Round Over")
-           continue_game = input("Continue to next turn? (yes/no): ")
-           if continue_game.lower() == 'no':
-             break
-         
+           break
+
+
+   
+
+   print("Middle deck:", mideck)
+   print("Remaining Cards",player_turn)
+   print("Next player's Cards:", lists[current_turn])
+   
+print("Middle deck:", mideck)
 
 
 
